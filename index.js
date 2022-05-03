@@ -30,6 +30,16 @@ let libraryButton = document.getElementById("libraryButton");
 libraryButton.addEventListener("click", (e) => 
 {
     e.preventDefault();
+
+    //Clear the Table if there is one.
+    let tableDiv = document.getElementById("booksTable");
+    if (tableDiv.hasChildNodes())
+    {
+      tableDiv.innerHTML = "";
+    }
+    
+    
+
     // Get the textbox inputs
 
     //Author
@@ -47,54 +57,64 @@ libraryButton.addEventListener("click", (e) =>
     // push the object to the array
     book_array.push(book);
 
-    
+
     book_array.forEach(element => 
       {
           // create a table row
           let tableRow = document.createElement("tr");
           tableRow.setAttribute("id","tableRow");
-  
+    
           // Get the book info
           let author = "Author: " + element.author;
           let title = "Title: " + element.title;
           let date = "Date: " + element.date;
          
-  
+    
           // add info to the row
           tableRow.innerHTML = ` <td> ${author} </td>
           <td> ${title} </td>
           <td> ${date} </td>
           <button id="deleteButton" type="button">Delete!</button>
           ` 
-  
+    
            let tableDiv = document.getElementById("booksTable");
-  
+    
            tableDiv.appendChild(tableRow);
-
+    
            console.log(book_array);
-  
+    
           
           // add event listener to parent of delete button, to use delete
       tableRow.addEventListener("click", (e) => 
-  {
+    {
       
       let tableDiv = document.getElementById("booksTable");
       tableDiv.removeChild(tableRow);
-      book_array.splice(element);
 
 
-  
-  
-  
-      
-  });
-  
-          
-  
-      });
-
-
+      // remove the book
+      book_array.forEach((book, index) =>
+      {
+        if(book.title === title)
+        {
+          book_array.splice(index,1);
+        }
+      })
     
+    
+    
+    
+    
+      
+    });
+    
+          
+    
+      });
+   
 });
+
+
+
 
 
