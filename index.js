@@ -25,15 +25,18 @@ class Book {
         
 
         // Get the book info
-        let author = element.author;
-        let title = element.title;
-        let date = element.date;
+        let author = "Author: " + element.author;
+        let title = "Title: " + element.title;
+        let date = "Date: " + element.date;
         let book = author + title + date;
 
         console.log(book);
 
         // add info to the row
-        tableRow.innerHTML = ` <td> ${book} </td>
+        tableRow.innerHTML = ` <td> ${author} </td>
+        <td> ${title} </td>
+        <td> ${date} </td>
+        <button id="deleteButton" type="button">Delete!</button>
         ` 
 
 
