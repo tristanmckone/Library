@@ -55,30 +55,30 @@ class Book {
 
     });
 
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // Button
 
 
 let libraryButton = document.getElementById("libraryButton");
 
 
-libraryButton.addEventListener("click", (e) => 
+libraryButton.addEventListener("click", () => 
 {
-    //e.preventDefault();
+    // Get the textbox inputs
+
+    //Author
+    let author = document.getElementById("author");
+
+    //Title
+    let title = document.getElementById("title");
+
+    //Date
+    let date = document.getElementById("date");
+
+
+    const exampleBook = {author:author, title:title, date:date};
+
+    book_array.push(exampleBook);
+
+
     
 });
