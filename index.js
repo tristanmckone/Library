@@ -14,23 +14,65 @@ class Book {
 
   // create a book and add it to the array
   const exampleBook = {author:"John", title:"Doe", date:1995};
+  const exampleBook2 = {author:"John", title:"Doe", date:1995};
 
   book_array.push(exampleBook);
+  book_array.push(exampleBook2);
 
-  // Create the books table
-  book_array.forEach(element => 
+  
+
+// Button
+
+
+let libraryButton = document.getElementById("libraryButton");
+
+
+
+
+libraryButton.addEventListener("click", (e) => 
+{
+    e.preventDefault();
+    // Get the textbox inputs
+
+    //Author
+    let author = document.getElementById("author").value;
+
+    //Title
+    let title = document.getElementById("title").value;
+
+    //Date
+    let date = document.getElementById("date").value;
+
+
+    const book = {author:author, title:title, date:date};
+
+    book_array.push(book);
+
+    console.log(book);
+    console.log(book_array);
+
+
+    
+});
+
+
+
+// Create the books table
+book_array.forEach(element => 
     {
         // create a table row
         let tableRow = document.createElement("tr");
+        tableRow.setAttribute("id","tableRow");
+
         
 
         // Get the book info
         let author = "Author: " + element.author;
         let title = "Title: " + element.title;
         let date = "Date: " + element.date;
-        let book = author + title + date;
+        //let book = author + title + date;
 
-        console.log(book);
+        //console.log(book);
 
         // add info to the row
         tableRow.innerHTML = ` <td> ${author} </td>
@@ -52,33 +94,18 @@ class Book {
          tableDiv.appendChild(tableRow);
 
         
-
-    });
-
-// Button
-
-
-let libraryButton = document.getElementById("libraryButton");
-
-
-libraryButton.addEventListener("click", () => 
+         
+    tableRow.addEventListener("click", (e) => 
 {
-    // Get the textbox inputs
+    
+    let tableDiv = document.getElementById("booksTable");
+    tableDiv.removeChild(tableRow);
 
-    //Author
-    let author = document.getElementById("author");
-
-    //Title
-    let title = document.getElementById("title");
-
-    //Date
-    let date = document.getElementById("date");
-
-
-    const exampleBook = {author:author, title:title, date:date};
-
-    book_array.push(exampleBook);
 
 
     
 });
+
+        
+
+    });
