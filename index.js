@@ -12,14 +12,6 @@ class Book {
   // Create the array
   const book_array = [];
 
-  // create a book and add it to the array
-  // const exampleBook = {author:"John", title:"Doe", date:1995};
-  // const exampleBook2 = {author:"John", title:"Doe", date:1995};
-
-  // book_array.push(exampleBook);
-  // book_array.push(exampleBook2);
-
-// Button
 
 
 let libraryButton = document.getElementById("libraryButton");
@@ -87,19 +79,34 @@ libraryButton.addEventListener("click", (e) =>
           // add event listener to parent of delete button, to use delete
       tableRow.addEventListener("click", (e) => 
     {
-      
-      let tableDiv = document.getElementById("booksTable");
-      tableDiv.removeChild(tableRow);
 
 
-      // remove the book
-      book_array.forEach((book, index) =>
+      if(e.target.id == "deleteButton")
       {
-        if(book.title === title)
+        // remove the book from page if delete button is pressed
+        let tableDiv = document.getElementById("booksTable");
+        tableDiv.removeChild(tableRow);
+
+
+        //Get the title of the book
+        let title = element.title;
+
+
+
+        // remove the book from the array
+      book_array.forEach((x, index) =>
+      {
+        if(x.title === title)
         {
           book_array.splice(index,1);
         }
       })
+      }
+      
+      
+
+
+     
     
     
     
